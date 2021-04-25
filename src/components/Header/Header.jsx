@@ -4,8 +4,8 @@ import './Header.css'
 
 const Header = () => {
   return (
-    <div>
-      <Link to='/'>QUIZ</Link>
+    <div className='header'>
+      <Link to='/' className='header-title'>QUIZ-APP</Link>
     </div>
   )
 }

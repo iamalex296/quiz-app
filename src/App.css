@@ -5,14 +5,10 @@
 }
 
 .App {
-  min-height: 98.5vh;
-  border: 10px solid lightgray;
-  margin: 5px;
-  padding: 5px;
+  color: rgb(55, 71, 79);
 }
 
 a {
-  /* text-decoration: none; */
   text-decoration: inherit;
   color: inherit;
 }

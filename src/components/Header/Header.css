@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid lightgrey;
+  padding: 5px;
+  background-color:  #E7E9EB;
+}
+
+.header-title {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 8vh;
+}

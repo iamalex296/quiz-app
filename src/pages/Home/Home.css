@@ -1,0 +1,81 @@
+.content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.settings {
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.quiz-settings {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .settings {
+    width: 100%;
+  }
+}
+
+.select-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-width: 40%;
+  justify-content: center;
+  background-color: #E7E9EB;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid lightgrey;
+  min-height: 200px;
+}
+
+.name-input {
+  outline: none;
+  height: 40px;
+  width: 250px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.select-category {
+  margin: 5px;
+  width: 250px;
+  height: 40px;
+  padding: 5px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.start-quiz-button {
+  outline: none;
+  width: 250px;
+  height: 40px;
+  margin-top: 15px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: rgb(97, 102, 228);
+  border-radius: 5px;
+  transition-duration: 0.8s;
+}
+
+.start-quiz-button:hover {
+  background-color:  rgb(129, 132, 236);
+}
