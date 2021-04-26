@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router';
 
-import './Home.css'
+import './Home.css';
 
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Categories from '../../Data/Categories';
 
 
@@ -16,7 +16,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
   const history = useHistory();
 
   const handleSubmit = () => {
-    if(!category || difficulty || !name) {
+    if(!category || !difficulty || !name) {
       setError(true)
       return;
     } else {
@@ -49,6 +49,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
             onChange={event => setCategory(event.target.value)}
             value={category}
           >
+            {category==='' && <option key='Select Category' value='select category'>Select Category</option>}
             {Categories.map(category => <option key={category.value} value={category.value}>{category.category}</option>)}
           </select>
 
@@ -59,6 +60,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
             onChange={event => setDifficulty(event.target.value)}
             value={difficulty}
           >
+            {difficulty==='' && <option key='Select Difficulty' value='select difficulty'>Select Difficulty</option>}
             <option key='Easy' value='easy'>Easy</option>
             <option key='Medium' value='medium'>Medium</option>
             <option key='Hard' value='hard'>Hard</option>
