@@ -9,23 +9,28 @@ const Quiz = ({ name, questions, score, setScore, currentQuestion, setCurrentQue
 
   const [options, setOptions] = useState();
 
-  useEffect(() => {
-    console.log('Questions', questions);
-
-    setOptions(
-      questions && 
-        handleShuffle([
-          questions[currentQuestion]?.correct_answer,
-          ...questions[currentQuestion]?.incorrect_answers,
-        ])
-    )
-  }, [questions, currentQuestion]);
-
-  console.log('Options', options)
-
   const handleShuffle = (optionss) => {
     return optionss.sort(() => Math.random() - 0.5);
   }
+  // console.log('options', options)
+
+  useEffect(() => {
+    console.log('Questions', questions);
+    if(questions 
+       && questions[currentQuestion] 
+       && questions[currentQuestion].correct_answer 
+       && questions[currentQuestion].incorrect_answers) {
+        //  console.log('q', questions)
+        setOptions(
+            handleShuffle([
+              questions[currentQuestion].correct_answer,
+              ...questions[currentQuestion].incorrect_answers,
+            ])
+      )
+    }
+  }, [questions, currentQuestion]);
+
+  // console.log('Options', options)
 
   return(
     <div className='quiz'>
@@ -43,7 +48,7 @@ const Quiz = ({ name, questions, score, setScore, currentQuestion, setCurrentQue
             setScore={setScore}
           />
           <div className='quiz-info'>
-            <span>Category: {questions[currentQuestion].category}</span>
+            <span>Category: {questions[currentQuestion]?.category}</span>
             <span>Score: {score}/{currentQuestion}</span>
           </div>
         </>

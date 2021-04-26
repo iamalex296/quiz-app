@@ -38,6 +38,7 @@ function App() {
               name={name}
               setName={setName}
               fetchQuestions={fetchQuestions}
+              setCurrentQuestion={setCurrentQuestion}
             />
           </Route>
           <Route exact path='/quiz'>

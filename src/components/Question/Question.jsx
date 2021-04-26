@@ -5,7 +5,6 @@ import './Question.css';
 
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-
 const Question = ({
   questions,
   currentQuestion,
@@ -48,7 +47,7 @@ const Question = ({
       setCurrentQuestion(currentQuestion + 1)
       setSelected()
     } else {
-      setError('Please Select An Option First');
+      setError('Please Select An Answer First !!!');
     }
   }
 
@@ -57,7 +56,7 @@ const Question = ({
       <h1>Question {currentQuestion + 1}</h1>
 
       <div className='question-container'>
-        <h2 className='current-question'>{questions[currentQuestion]?.question}</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: questions[currentQuestion]?.question}} className='current-question' />
         <div className='options'>
         {options && options.map(i => (
           <button 

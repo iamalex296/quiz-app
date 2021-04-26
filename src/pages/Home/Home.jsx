@@ -1,19 +1,30 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router';
+import axios from 'axios';
+import Loader from '../../components/Loader/Loader';
 
 import './Home.css';
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import Categories from '../../Data/Categories';
 
-
-const Home = ({ setScore, name, setName, fetchQuestions }) => {
+const Home = ({ setScore, name, setName, fetchQuestions, setCurrentQuestion }) => {
 
   const [category, setCategory] = useState('');
+  const [categories, setCategories] = useState([]);
   const [difficulty, setDifficulty] = useState('');
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
+
+  useEffect(() => {
+    axios.get(`https://opentdb.com/api_category.php`)
+      .then((res) => {
+        setCategories(res.data.trivia_categories)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  },[])
 
   const handleSubmit = () => {
     if(!category || !difficulty || !name) {
@@ -21,11 +32,14 @@ const Home = ({ setScore, name, setName, fetchQuestions }) => {
       return;
     } else {
       setError(false);
+      setCurrentQuestion(0);
       setScore(0);
       fetchQuestions(category, difficulty)
       history.push("/quiz")
     }
   }
+
+  if(loading) return <Loader />
 
   return(
     <div className='content'>
@@ -44,14 +58,14 @@ const Home = ({ setScore, name, setName, fetchQuestions }) => {
           />
 
           <label style={{fontWeight: 'normal', marginTop: '15px'}} for='select category'>Select Category</label>
-          <select 
+          <select
             name="categories" 
             className='select-category'
             onChange={event => setCategory(event.target.value)}
             value={category}
           >
             {category==='' && <option key='Select Category' value='select category'>Select Category</option>}
-            {Categories.map(category => <option key={category.value} value={category.value}>{category.category}</option>)}
+            {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
           </select>
 
           <label style={{fontWeight: 'normal', marginTop: '15px'}} for='select difficulty'>Select Difficulty</label>
