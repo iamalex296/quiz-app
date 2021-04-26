@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
@@ -7,7 +7,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
-import Result from './pages/Quiz/Quiz';
+import Result from './pages/Result/Result';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
   const [name, setName] = useState('');
   const [questions, setQuestions] = useState('');
   const [score, setScore] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const fetchQuestions = async(category='', difficulty='') => {
     const { data } = await axios.get(
@@ -28,12 +29,12 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
       <div className="App">
         <Header />
         <Switch>
           <Route exact path='/'>
             <Home
+              setScore={setScore}
               name={name}
               setName={setName}
               fetchQuestions={fetchQuestions}
@@ -46,14 +47,19 @@ function App() {
               setQuestions={setQuestions}
               score={score}
               setScore={setScore}
+              currentQuestion={currentQuestion}
+              setCurrentQuestion={setCurrentQuestion}
             />
           </Route>
           <Route exact path='/result'>
-            <Result />
+            <Result
+              name={name} 
+              score={score} 
+              currentQuestion={currentQuestion}
+            />
           </Route>
         </Switch>
       </div>
-    </BrowserRouter>
   );
 }
 

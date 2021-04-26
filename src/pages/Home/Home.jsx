@@ -7,7 +7,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Categories from '../../Data/Categories';
 
 
-const Home = ({ name, setName, fetchQuestions }) => {
+const Home = ({ setScore, name, setName, fetchQuestions }) => {
 
   const [category, setCategory] = useState('');
   const [difficulty, setDifficulty] = useState('');
@@ -21,6 +21,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
       return;
     } else {
       setError(false);
+      setScore(0);
       fetchQuestions(category, difficulty)
       history.push("/quiz")
     }

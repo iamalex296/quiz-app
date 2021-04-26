@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 import Question from '../../components/Question/Question';
+import Loader from '../../components/Loader/Loader';
 
 import './Quiz.css';
 
-const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
+const Quiz = ({ name, questions, score, setScore, currentQuestion, setCurrentQuestion }) => {
 
   const [options, setOptions] = useState();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   useEffect(() => {
     console.log('Questions', questions);
@@ -19,7 +19,7 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
           ...questions[currentQuestion]?.incorrect_answers,
         ])
     )
-  }, [questions]);
+  }, [questions, currentQuestion]);
 
   console.log('Options', options)
 
@@ -35,7 +35,6 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
         <>
           <Question
             questions={questions}
-            setQuestions={setQuestions}
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             options={options}
@@ -45,13 +44,11 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
           />
           <div className='quiz-info'>
             <span>Category: {questions[currentQuestion].category}</span>
-            <span>Score: {score}</span>
+            <span>Score: {score}/{currentQuestion}</span>
           </div>
         </>
         ) : (
-        <span style={{margin: '100px', color: 'grey'}}>
-          Loading...
-        </span>
+          <Loader />
       )}
 
     </div>

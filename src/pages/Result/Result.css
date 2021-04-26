@@ -1,0 +1,31 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  height: 65vh;
+}
+
+.title {
+  font-size: 34px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.play-again-button {
+  outline: none;
+  width: 250px;
+  height: 40px;
+  margin-top: 15px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: rgb(97, 102, 228);
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+
+.play-again-button:hover {
+  background-color:  rgb(129, 132, 236);
+}
