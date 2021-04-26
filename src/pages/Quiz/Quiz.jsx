@@ -34,7 +34,9 @@ const Quiz = ({ name, questions, score, setScore, currentQuestion, setCurrentQue
 
   return(
     <div className='quiz'>
-      <span className='subtitle'>Good Luck {name}</span>
+      <span className='subtitle'>
+        Good Luck <span className='name'>{name}</span>
+      </span>
 
       {questions ? (
         <>

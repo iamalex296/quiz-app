@@ -68,7 +68,7 @@ const Question = ({
           />
           )
         )}
-      </div>
+        </div>
 
       <div className='controls'>
         <button

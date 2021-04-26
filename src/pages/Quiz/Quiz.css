@@ -19,3 +19,7 @@
   text-transform: uppercase;
   margin: 10px;
 }
+
+.name {
+  text-transform: capitalize;
+}
