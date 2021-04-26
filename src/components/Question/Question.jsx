@@ -59,12 +59,13 @@ const Question = ({
         <h2 dangerouslySetInnerHTML={{ __html: questions[currentQuestion]?.question}} className='current-question' />
         <div className='options'>
         {options && options.map(i => (
-          <button 
+          <button
+            dangerouslySetInnerHTML={{ __html: i}}
             onClick={() => handleCheck(i)}
             className={`single-option ${selected && handleSelect(i)}`}
             key={i}
             disabled={selected}
-          >{i}</button>
+          />
           )
         )}
       </div>
